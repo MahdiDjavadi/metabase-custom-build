@@ -23,7 +23,7 @@ jobs:
       - name: Fix Metabase Dockerfile Bug & Inject Custom Assets
         run: |
           cd metabase-source
-          # اصلاح دقیق باگ داکرفایل رسمی متابیس در خطوط ۱۸ تا ۲۰
+          # رفع باگ خط ۲۰ داکرفایل
           sed -i 's/\.\/linux-install-1.12.0.1488.sh/.\/linux-install-1.12.0.1488.sh \\/g' Dockerfile
           
           # کپی کردن فونت‌ها و استایل‌ها به مسیر کدهای فرانت‌اند
@@ -34,7 +34,8 @@ jobs:
       - name: Build Docker Image
         run: |
           cd metabase-source
-          docker build -t my-metabase:custom .
+          # تزریق متغیر VERSION به عنوان آرگومان بیلد داکر برای حل خطای خط ۳۵
+          docker build --build-arg VERSION=v0.60.7 -t my-metabase:custom .
 
       - name: Save Artifact
         run: |
