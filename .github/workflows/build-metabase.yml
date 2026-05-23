@@ -23,10 +23,10 @@ jobs:
       - name: Fix Metabase Dockerfile Bug & Inject Custom Assets
         run: |
           cd metabase-source
-          # رفع باگ خط ۲۰ در داکر فایل رسمی متابیس (اضافه کردن بک‌اسلش جا افتاده)
+          # اصلاح دقیق باگ داکرفایل رسمی متابیس در خطوط ۱۸ تا ۲۰
           sed -i 's/\.\/linux-install-1.12.0.1488.sh/.\/linux-install-1.12.0.1488.sh \\/g' Dockerfile
           
-          # کپی کردن فونت‌ها و استایل‌ها به مسیر سورس
+          # کپی کردن فونت‌ها و استایل‌ها به مسیر کدهای فرانت‌اند
           cd ..
           cp fonts/* metabase-source/resources/frontend_client/
           cp custom-styles.css metabase-source/resources/frontend_client/custom-styles.css
